@@ -1,3 +1,12 @@
+<?php
+include 'database.php';
+
+// Create SELECT query
+$query = 'SELECT * FROM messages';
+$result = mysqli_query($con, $query);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,10 +27,9 @@
 
         <div id="chatbox">
             <ul>
-                <li class="message"><span>10:15 PM - </span>Jonny: Yo. What's cracking?</li>
-                <li class="message"><span>10:15 PM - </span>Jonny: Yo. What's cracking?</li>
-                <li class="message"><span>10:15 PM - </span>Jonny: Yo. What's cracking?</li>
-                <li class="message"><span>10:15 PM - </span>Jonny: Yo. What's cracking?</li>
+                <?php while($row = mysqli_fetch_assoc($result)) : ?>
+                    <li class="message"><span><?= $row['time'] ?> - </span><strong><?= $row['user'] ?></strong>: <?= $row['content'] ?></li>
+                <?php endwhile; ?>
             </ul>
         </div>
 
