@@ -28,12 +28,16 @@ $result = mysqli_query($con, $query);
         <div id="chatbox">
             <ul>
                 <?php while($row = mysqli_fetch_assoc($result)) : ?>
-                    <li class="message"><span><?= $row['time'] ?> - </span><strong><?= $row['user'] ?></strong>: <?= $row['content'] ?></li>
+                    <li class="message"><span><?= $row['post_time'] ?> - </span><strong><?= $row['user'] ?></strong>: <?= $row['content'] ?></li>
                 <?php endwhile; ?>
             </ul>
         </div>
 
         <div id="input">
+            <?php if(isset($_GET['error'])) : ?>
+                <div class="error"><?= $_GET['error'] ?></div>
+            <?php endif; ?>
+            
             <form action="process.php" method="post">
                 <input type="text" name="user" placeholder="Enter Your Name">
                 <input type="text" name="message" placeholder="Enter A Message">
