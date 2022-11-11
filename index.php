@@ -2,7 +2,7 @@
 include 'database.php';
 
 // Create SELECT query
-$query = 'SELECT * FROM messages';
+$query = 'SELECT * FROM chatbox';
 $result = mysqli_query($con, $query);
 
 ?>

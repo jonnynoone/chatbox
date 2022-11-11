@@ -12,7 +12,7 @@ if(isset($_POST['submit'])) {
 
     // Validate input
     if(!empty($user) && !empty($message)) {
-        $query = "INSERT INTO messages (user, content, post_time)
+        $query = "INSERT INTO chatbox (user, content, post_time)
                   VALUES ('${user}', '${message}', '${time}')";
 
         if(!mysqli_query($con, $query)) {
